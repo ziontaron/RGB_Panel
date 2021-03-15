@@ -46,7 +46,7 @@ void loop(){
     inputString = "";
     stringComplete = false;
   }
-//Sparkles();
+Sparkles();
 Set_Pixel(0,0,255,0,0); //Red
 Set_Pixel(7,0,255,0,0); //Red
 Set_Pixel(0,7,255,0,0); //Red

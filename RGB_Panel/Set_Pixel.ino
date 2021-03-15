@@ -9,15 +9,17 @@ byte R_RGB_B=random(0, 255);
 Set_Pixel(R_Pixel_C, R_Pixel_R, R_RGB_R, R_RGB_G, R_RGB_B);
   
   }
+  
 void Set_Pixel(int Column,int Row,byte R,byte G,byte B)
-{int Pixel_No=(Column);
+{
+  int Pixel_No=(Column);
   for(int i=0;i<Row;i++)
   {
   Pixel_No+=Columns;
   }
 tira.setPixelColor(Pixel_No,R,G,B);
 tira.show();
-  delay(retardo);
+  delay(10);
   }
   void Clear_Panel()
   {
@@ -30,7 +32,7 @@ for (int i=0;i<nleds;i++){
 
  } 
  tira.show();
- delay(500);
+ delay(10);
   Serial.println("Panel Cleared!");
     }
     

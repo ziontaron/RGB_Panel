@@ -16,6 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="RGB_Panel.ino" />
+    <None Include="Set_Pixel.ino" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.RGB_Panel.vsarduino.h">

@@ -1,3 +1,34 @@
+void SerialParse(String Command)
+{
+    char _c;
+    String Param = "";
+    String Value = "";
+    int Col = 0;
+    int Row = 0;
+    uint8_t RGB_R = 0;
+    uint8_t RGB_G = 0;
+    uint8_t RGB_B = 0;
+    Serial.print("Command: ");
+    Serial.println(Command);
+
+    for (int i = 0; i < Command.length(); i++)
+    {
+        _c = Command[i];
+        if (_c == ' ')
+        {
+            Serial.println(Param);
+            Param = "";
+            /////Selector////////
+            /////////////////////
+        }
+        else
+        {
+            Param += _c;
+        }
+    }
+
+}
+
 void Sparkles()
 {
     int R_Pixel_C = random(0, Columns);
@@ -6,8 +37,7 @@ void Sparkles()
     byte R_RGB_G = random(0, 255);
     byte R_RGB_B = random(0, 255);
     Set_Pixel(R_Pixel_C, R_Pixel_R, R_RGB_R, R_RGB_G, R_RGB_B);
-}
-  
+}  
 void Set_Pixel(int Column, int Row, byte R, byte G, byte B)
 {
     int Pixel_No = (Column);
@@ -31,8 +61,7 @@ void Clear_Panel()
     tira.show();
     delay(10);
     Serial.println("Panel Cleared!");
-}
-    
+}    
   void Pixel_Check()
   {
       Serial.print("Qty of Pixels: ");

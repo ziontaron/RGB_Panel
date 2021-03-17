@@ -44,6 +44,13 @@ void loop()
     {
         Serial.println(inputString);
         // clear the string:
+        /////////////////////////////////////////////////////////////////////////
+        /// COMMAND: SP C[Column] R[Row] R[Red] G[Green] B[Blue]
+        /// RGB Values Between 0 - 255
+        /// Example: SP C3 R2 R255 G255 B255
+        SerialParse(inputString);
+
+        /////////////////////////////////////////////////////////////////////////
         inputString = "";
         stringComplete = false;
     }
@@ -77,26 +84,35 @@ void loop()
 void serialEvent()
 {
     //int counter = 0;
+    char inChar;
     while (Serial.available())
     {
-        // get the new byte:
-        char inChar = (char)Serial.read();
-        // add it to the inputString:
-        inputString += inChar;
-        //Serial.println(inputString);
-        // if the incoming character is a newline, set a flag so the main loop can
-        // do something about it:
-        if (inChar == '\n')
-        {
-            stringComplete = true;
-            //Serial.println("Finish Serial Event!!");
-        }
-        //else
+
+        inputString = Serial.readString();
+        Serial.print("Finish Serial Event:");
+        Serial.println(inputString);
+        stringComplete = true;
+         
+        //// get the new byte:
+        //inChar = (char)Serial.read();
+        //// add it to the inputString:
+        //inputString += inChar;
+        ////Serial.println(inputString);
+        //// if the incoming character is a newline, set a flag so the main loop can
+        //// do something about it:
+        ////if (inChar == '\n' || inChar == '\0')
+        //if (inChar == '\n')
         //{
-        //    Serial.println(inChar);
-        //    counter++;
+        //    stringComplete = true;
+        //    Serial.print("Finish Serial Event:");
+        //    Serial.println(inputString);
         //}
+        ////else
+        ////{
+        ////    Serial.println(inChar);
+        ////    counter++;
+        ////}
     }
-    stringComplete = true;
+    //stringComplete = true;
     //Serial.println(counter);
 }

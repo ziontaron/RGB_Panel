@@ -1,8 +1,9 @@
 void SerialParse(String Command)
 {
     char _c;
+    //String Work_String = "";
     String Param = "";
-    String Value = "";
+    //String Value = "";
     int Col = 0;
     int Row = 0;
     uint8_t RGB_R = 0;
@@ -14,19 +15,68 @@ void SerialParse(String Command)
     for (int i = 0; i < Command.length(); i++)
     {
         _c = Command[i];
-        if (_c == ' ')
+        if (_c == ' ' || _c == '\n' || _c == '\0')
         {
-            Serial.println(Param);
-            Param = "";
+            //Serial.println(Param);
             /////Selector////////
+            switch (Param[0])
+            {
+                case 'C':
+                {
+                    Param.replace('C', ' ');
+                    Param.trim();
+                    Col = Param.toInt();
+                    //Serial.println(Col);
+                    break;
+                }
+                case 'R':
+                {
+                    Param.replace('R', ' ');
+                    Param.trim();
+                    Row = Param.toInt();
+                    //Serial.println(Row);
+                    break;
+                }
+                case 'r':
+                {
+                    Param.replace('r', ' ');
+                    Param.trim();
+                    RGB_R = Param.toInt();
+                    //Serial.println(RGB_R);
+                    break;
+                }
+                case 'g':
+                {
+                    Param.replace('g', ' ');
+                    Param.trim();
+                    RGB_G = Param.toInt();
+                    //Serial.println(RGB_G);
+                    break;
+                }
+                case 'b':
+                {
+                    Param.replace('b', ' ');
+                    Param.trim();
+                    RGB_B = Param.toInt();
+                    //Serial.println(RGB_B);
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
             /////////////////////
+            Param = "";
         }
         else
         {
             Param += _c;
         }
     }
-
+    //Serial.println(Param);
+    Param = "";
+    Set_Pixel(Col, Row, RGB_R, RGB_G, RGB_B);
 }
 
 void Sparkles()

@@ -45,9 +45,9 @@ void loop()
         Serial.println(inputString);
         // clear the string:
         /////////////////////////////////////////////////////////////////////////
-        /// COMMAND: SP C[Column] R[Row] R[Red] G[Green] B[Blue]
+        /// COMMAND: SP C[Column] R[Row] r[Red] r[Green] r[Blue]
         /// RGB Values Between 0 - 255
-        /// Example: SP C3 R2 R255 G255 B255
+        /// Example: SP C3 R2 r255 g255 b255
         SerialParse(inputString);
 
         /////////////////////////////////////////////////////////////////////////
@@ -55,25 +55,25 @@ void loop()
         stringComplete = false;
     }
     //Sparkles();
-    Set_Pixel(0, 0, 255, 0, 0); //Red
-    Set_Pixel(7, 0, 255, 0, 0); //Red
-    Set_Pixel(0, 7, 255, 0, 0); //Red
-    Set_Pixel(7, 7, 255, 0, 0); //Red
+    //Set_Pixel(0, 0, 255, 0, 0); //Red
+    //Set_Pixel(7, 0, 255, 0, 0); //Red
+    //Set_Pixel(0, 7, 255, 0, 0); //Red
+    //Set_Pixel(7, 7, 255, 0, 0); //Red
 
-    Set_Pixel(8, 0, 0, 255, 0); //Green
-    Set_Pixel(15, 0, 0, 255, 0); //Green
-    Set_Pixel(8, 7, 0, 255, 0); //Green
-    Set_Pixel(15, 7, 0, 255, 0); //Green
+    //Set_Pixel(8, 0, 0, 255, 0); //Green
+    //Set_Pixel(15, 0, 0, 255, 0); //Green
+    //Set_Pixel(8, 7, 0, 255, 0); //Green
+    //Set_Pixel(15, 7, 0, 255, 0); //Green
 
-    Set_Pixel(0, 8, 0, 0, 255); //Blue
-    Set_Pixel(7, 8, 0, 0, 255); //Blue
-    Set_Pixel(0, 15, 0, 0, 255); //Blue
-    Set_Pixel(7, 15, 0, 0, 255); //Blue
+    //Set_Pixel(0, 8, 0, 0, 255); //Blue
+    //Set_Pixel(7, 8, 0, 0, 255); //Blue
+    //Set_Pixel(0, 15, 0, 0, 255); //Blue
+    //Set_Pixel(7, 15, 0, 0, 255); //Blue
 
-    Set_Pixel(15, 8, 255, 255, 0); //Yellow
-    Set_Pixel(8, 15, 255, 255, 0); //Yellow
-    Set_Pixel(15, 15, 255, 255, 0); //Yellow
-    Set_Pixel(8, 8, 255, 255, 0); //Yellow
+    //Set_Pixel(15, 8, 255, 255, 0); //Yellow
+    //Set_Pixel(8, 15, 255, 255, 0); //Yellow
+    //Set_Pixel(15, 15, 255, 255, 0); //Yellow
+    //Set_Pixel(8, 8, 255, 255, 0); //Yellow
     ////////////////////////////////////////////////////////
 }
 /*
@@ -87,32 +87,9 @@ void serialEvent()
     char inChar;
     while (Serial.available())
     {
-
         inputString = Serial.readString();
-        Serial.print("Finish Serial Event:");
-        Serial.println(inputString);
-        stringComplete = true;
-         
-        //// get the new byte:
-        //inChar = (char)Serial.read();
-        //// add it to the inputString:
-        //inputString += inChar;
-        ////Serial.println(inputString);
-        //// if the incoming character is a newline, set a flag so the main loop can
-        //// do something about it:
-        ////if (inChar == '\n' || inChar == '\0')
-        //if (inChar == '\n')
-        //{
-        //    stringComplete = true;
-        //    Serial.print("Finish Serial Event:");
-        //    Serial.println(inputString);
-        //}
-        ////else
-        ////{
-        ////    Serial.println(inChar);
-        ////    counter++;
-        ////}
     }
-    //stringComplete = true;
-    //Serial.println(counter);
+       /* Serial.print("Finish Serial Event:");
+        Serial.println(inputString);*/
+        stringComplete = true;
 }

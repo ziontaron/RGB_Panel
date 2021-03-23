@@ -33,6 +33,7 @@ void setup() {
     //Pixel_Check();
     inputString.reserve(200);
     tira.setBrightness(brillo);
+    Set_Pixel(7, 7, 255, 255, 255); //Red
 }
 
 void loop()
@@ -74,6 +75,7 @@ void loop()
     //Set_Pixel(8, 15, 255, 255, 0); //Yellow
     //Set_Pixel(15, 15, 255, 255, 0); //Yellow
     //Set_Pixel(8, 8, 255, 255, 0); //Yellow
+    //delay(100);
     ////////////////////////////////////////////////////////
 }
 /*

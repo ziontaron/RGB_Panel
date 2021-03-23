@@ -15,7 +15,7 @@ void SerialParse(String Command)
     for (int i = 0; i < Command.length(); i++)
     {
         _c = Command[i];
-        if (_c == ' ' || _c == '\n' || _c == '\0')
+        if (_c == ' ' || _c == '\n' || _c == '\0' || _c == ';')
         {
             //Serial.println(Param);
             /////Selector////////
@@ -24,6 +24,7 @@ void SerialParse(String Command)
                 case 'C':
                 {
                     Param.replace('C', ' ');
+                    Param.replace(';', ' ');
                     Param.trim();
                     Col = Param.toInt();
                     //Serial.println(Col);
@@ -32,6 +33,7 @@ void SerialParse(String Command)
                 case 'R':
                 {
                     Param.replace('R', ' ');
+                    Param.replace(';', ' ');
                     Param.trim();
                     Row = Param.toInt();
                     //Serial.println(Row);
@@ -40,6 +42,7 @@ void SerialParse(String Command)
                 case 'r':
                 {
                     Param.replace('r', ' ');
+                    Param.replace(';', ' ');
                     Param.trim();
                     RGB_R = Param.toInt();
                     //Serial.println(RGB_R);
@@ -48,6 +51,7 @@ void SerialParse(String Command)
                 case 'g':
                 {
                     Param.replace('g', ' ');
+                    Param.replace(';', ' ');
                     Param.trim();
                     RGB_G = Param.toInt();
                     //Serial.println(RGB_G);
@@ -56,6 +60,7 @@ void SerialParse(String Command)
                 case 'b':
                 {
                     Param.replace('b', ' ');
+                    Param.replace(';', ' ');
                     Param.trim();
                     RGB_B = Param.toInt();
                     //Serial.println(RGB_B);
@@ -74,7 +79,7 @@ void SerialParse(String Command)
             Param += _c;
         }
     }
-    //Serial.println(Param);
+    //Serial.println(RGB_B);
     Param = "";
     Set_Pixel(Col, Row, RGB_R, RGB_G, RGB_B);
 }
@@ -87,14 +92,19 @@ void Sparkles()
     byte R_RGB_G = random(0, 255);
     byte R_RGB_B = random(0, 255);
     Set_Pixel(R_Pixel_C, R_Pixel_R, R_RGB_R, R_RGB_G, R_RGB_B);
-}  
-void Set_Pixel(int Column, int Row, byte R, byte G, byte B)
+}
+//void Set_Pixel(int Column, int Row, byte R, byte G, byte B)
+void Set_Pixel(int Column, int Row, uint8_t R, uint8_t G, uint8_t B)
 {
+    //uint8_t
     int Pixel_No = (Column);
     for (int i = 0; i < Row; i++)
     {
         Pixel_No += Columns;
     }
+   /* Serial.println((char)R);
+    Serial.println((char)G);
+    Serial.println((char)B);*/
     tira.setPixelColor(Pixel_No, R, G, B);
     tira.show();
     delay(10);
